@@ -6,7 +6,7 @@ Este repo é um exemplo de como compilar seu projeto web que server HTML dinâmi
 
 O nosso diretório html é onde encontra-se uma página html um carrinho de compras, uma simples simulação para que possa entender o comportamento do nosso build usando Go.
 
-Usamos para este projeto o [go static](github.com/rakyll/statik) para fazer o embed. 
+Usamos para este projeto o [go static](github.com/rakyll/statik) para fazer o Embedded. 
 
 Vamos primeiramente instalar o statik
 ```bash
