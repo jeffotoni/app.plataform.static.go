@@ -12,10 +12,12 @@ var (
 
 func main() {
 
-	//go:embed html/*
+	//go:embed static
 	var content embed.FS
 
 	mux := http.NewServeMux()
+
+	//mux.Handle("/", http.StripPrefix("/", DisabledFs(fs)))
 	fs := http.FileServer(http.FS(content))
 	mux.Handle("/", http.StripPrefix("/", DisabledFs(fs)))
 	mux.HandleFunc("/ping", Ping)
@@ -31,7 +33,7 @@ func Ping(w http.ResponseWriter, r *http.Request) {
 
 func DisabledFs(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if strings.HasSuffix(r.URL.Path, "/") {
+		if strings.HasSuffix(r.URL.Path, "/static") {
 			http.NotFound(w, r)
 			return
 		}
